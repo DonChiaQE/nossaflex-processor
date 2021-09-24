@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body class="noss-body square-grid">
+        <h1>NOSSAFLEX Processor</h1>
+        <div id="loading">Working...</div>
+        <form method="post" enctype="multipart/form-data" class="noss-form">
+            <input class="noss-file" type=file name=file required>
+            
+            <textarea class="noss-textarea" value="noss" name="noss" placeholder="CN_NO09_SS12s_A32_FL50_EX0" required></textarea>
+            <input class="noss-text" type="text" placeholder="ISO" name="iso" required/>
+            <input class="button" type=submit value=Upload onclick="loading();">
+        </form>
+    </body>
+    <style>
+        .square-grid {
+            background-size: 40px 40px;
+  background-image: radial-gradient(circle, #000000 1px, rgba(0, 0, 0, 0) 1px);
+          }
+
+        .noss-body {
+            background-color: #F6F5F1;
+            padding-left: 20%;
+            padding-right: 20%;
+            font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+        }
+
+        .noss-file {
+            height: 150px;
+            border: rgb(119, 119, 119, 0.2) solid 4px;
+            border-radius: 6px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .noss-form {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 5px rgba(10, 10, 10, 0.1);
+        }
+
+        .noss-textarea {
+            height: 150px;
+            border: rgb(119, 119, 119, 0.2) solid 4px;
+            border-radius: 6px;
+            padding: 10px;
+            outline: none;
+            resize: vertical;
+        }
+
+        .noss-text  {
+            border: rgb(119, 119, 119, 0.2) solid 4px;
+            border-radius: 6px;
+            padding: 10px;
+            outline: none;
+        }
+
+        .button {
+            outline: none;
+            border: none;
+            border-radius: 6px;
+            background-color: #FAE078;
+            padding: 10px;
+            transition: all .2s linear;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .button:hover {
+            cursor: pointer;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0px 4px 5px rgba(10, 10, 10, 0.2);
+        }
+
+        .button:active {
+            box-shadow: none;
+        }
+
+        input {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        div#loading {
+            cursor: wait;
+            display: none;
+            text-align: left;
+            margin-bottom: 10px;
+            z-index: 99;
+            }
+    </style>
+    <script type="text/javascript">// <![CDATA[
+        function loading(){
+            $("#loading").show();
+            $("#content").hide();       
+        }
+// ]]></script>
+</html>
