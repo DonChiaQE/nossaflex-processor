@@ -25,9 +25,14 @@ def upload_file():
             print('herererereadqwe')
             flash('No file part')
             return redirect(request.url)
+
         file = request.files['file']
         noss = request.form.get('noss')
         iso = request.form.get('iso')
+        camera = request.form.get('camera')
+        model = request.form.get('model')
+        size = request.form.get('35mm')
+
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
@@ -64,6 +69,9 @@ def upload_file():
                         print(index)
                         exif = shot.split('_')
                         print('exif', exif)
+
+                        if size:
+                            f_image.focal_length_in_35mm_film = exif[4].strip('FL')
                         
                         f_image.focal_length = exif[4].strip('FL')
                         
@@ -86,6 +94,9 @@ def upload_file():
                             f_image.exposure_time = f'1/{exif[2].strip("SS")}'
                         
                         f_image.iso_speed = iso
+
+                        f_image.make = camera
+                        f_image.model = model
                         
                         print(photos[index])
                         

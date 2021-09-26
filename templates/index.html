@@ -5,16 +5,32 @@
     </head>
     <body class="noss-body square-grid">
         <h1>NOSSAFLEX Processor</h1>
-        <div id="loading">Working...</div>
+        <div class="loading" id="loading">Working</div>
         <form method="post" enctype="multipart/form-data" class="noss-form">
-            <input class="noss-file" type=file name=file required>
-            
+            <label for="camera">Camera brand: </label>
+            <input class="noss-text noss-camera" placeholder="Mamiya" type="text" name="camera" required/>
+            <label for="model">Camera model: </label>
+            <input class="noss-text noss-model" placeholder="RB67" type="text" name="model" required/>
+            <label for="file">Zip file of photos: </label>
+            <input class="noss-file" type="file" name="file" required>
+            <label for="noss">NOSSAFLEX Data: </label>
             <textarea class="noss-textarea" value="noss" name="noss" placeholder="CN_NO09_SS12s_A32_FL50_EX0" required></textarea>
+            <label for="iso">Film Speed: </label>
             <input class="noss-text" type="text" placeholder="ISO" name="iso" required/>
-            <input class="button" type=submit value=Upload onclick="loading();">
+            <label style="margin-bottom: 0; padding-bottom: 0;" for="35mm">Check this is you're using 35mm film: </label>
+            <input type="checkbox" name="35mm" />
+            <div class="button-border">
+                <input class="button" type=submit value=Upload onclick="loading();">
+            </div>
         </form>
     </body>
     <style>
+        label {
+            font-size: small;
+            color: #646464;
+            font-weight: 300;
+        }
+
         .square-grid {
             background-size: 40px 40px;
   background-image: radial-gradient(circle, #000000 1px, rgba(0, 0, 0, 0) 1px);
@@ -69,6 +85,8 @@
             transition: all .2s linear;
             text-align: left;
             width: fit-content;
+            font-size: large;
+            font-weight: 800;
         }
 
         .button:hover {
@@ -82,8 +100,13 @@
         }
 
         input {
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        textarea {
+            margin-top: 15px;
+            margin-bottom: 15px;
         }
 
         div#loading {
@@ -92,7 +115,33 @@
             text-align: left;
             margin-bottom: 10px;
             z-index: 99;
+        }
+
+        .loading {
+            font-size: 30px;
+          }
+          
+          .loading:after {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: bottom;
+            -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+            animation: ellipsis steps(4,end) 900ms infinite;
+            content: "\2026"; /* ascii code for the ellipsis character */
+            width: 0px;
+          }
+          
+          @keyframes ellipsis {
+            to {
+              width: 1.25em;    
             }
+          }
+          
+          @-webkit-keyframes ellipsis {
+            to {
+              width: 1.25em;    
+            }
+          }
     </style>
     <script type="text/javascript">// <![CDATA[
         function loading(){
